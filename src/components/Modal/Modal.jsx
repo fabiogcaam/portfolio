@@ -50,8 +50,24 @@ const Modal = ({ isVisible, onClose, project }) => {
                     <h3 className="text-lg pb-2 text-green-500">Stack: {project.technology}</h3>
                     <p>Esta es la descripción {project.description}</p>
 
+                    {
+                        project?.url &&
+                        <div className="my-5">
+                            <a href={project.url} className="bg-green-400 text-white py-2 px-4 rounded">Go to the project</a>
+                        </div>
+                    }
+                    {project?.code && project.code.length == 1 &&
+                        <div className="my-5">
+                            <a href={project.code[0]} className="bg-blue-900 text-white py-2 px-4 rounded border-4 border-blue-900 hover:border-green-400">Code</a>
+                        </div>}
+                    {
+                        project?.code && project.code.length === 2 &&
+                        <div className="my-5">
+                            <a href={project.code[0]} className="bg-blue-900 text-white mx-2 py-2 px-4 rounded border-4 border-blue-900 hover:border-green-400">Front-End Code</a>
+                            <a href={project.code[1]} className="bg-blue-900 text-white mx-2 py-2 px-4 rounded border-4 border-blue-900 hover:border-green-400">Back-End Code</a>
+                        </div>
+                    }
                 </div>
-                {project.url && <button className="bg-green-400 text-white mb-5">Go to the project</button>}
             </div>
         </div>
     )
